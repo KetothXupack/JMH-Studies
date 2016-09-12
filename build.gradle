@@ -20,29 +20,22 @@ buildscript {
       mavenCentral()
    }
 
-   dependencies {      
+   dependencies {
       classpath 'me.champeau.gradle:jmh-gradle-plugin:0.2.0'
       classpath 'org.openjdk.jmh:jmh-core:1.9.3'
       classpath 'org.openjdk.jmh:jmh-generator-annprocess:1.9.3'
    }
 }
 
-dependencies {      
+dependencies {
      compile 'me.champeau.gradle:jmh-gradle-plugin:0.2.0'
      compile 'org.openjdk.jmh:jmh-core:1.9.3'
      compile 'org.openjdk.jmh:jmh-generator-annprocess:1.9.3'
 }
 
+apply plugin: "me.champeau.gradle.jmh"
+
 jmh {
     include = ''//https://github.com/melix/jmh-gradle-plugin/issues/6
     humanOutputFile = null
 }
-
-jmhJar {
-	manifest.attributes 'Main-Class': mainClassName
-	//append 'META-INF/BenchmarkList'
-	//append 'META-INF/CompilerHints'
-}
-
-
-
